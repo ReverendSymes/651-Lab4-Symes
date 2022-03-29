@@ -13,21 +13,11 @@ https://leafletjs.com/examples.html was an incredible resource.-->
   crossorigin=""></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"></script>
 
-<!-- <script>
-  var mqtt;
-  var host= "test.mosquitto.org" ;
-  var port= 8080;
-  var reconnectTimeout =2000;
 
-  function onConnectionLost(){
-    console.log("Lost_Connection")
-  }
-  mqtt.onConnectionLost = onConnectionLost;
-</script> -->
  <!-- Made possibe through the following resource https://www.eclipse.org/paho/index.php?page=clients/js/index.php -->
 
 <script type="text/javascript">
-  // Create a client instance
+  // Create a client instance based on the users input
 //   function giveInput(){
 //     var choosehost = document.getElementById('choosehost').value;
 //     var chooseport = document.getElementById('chooseport').value;
@@ -59,7 +49,7 @@ function onConnectionLost(responseObject) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
   alert("Lost the Connection :(");
-  // client = new Paho.MQTT.Client("test.mosquitto.org", 8080, "AndrewSymes");
+   client = new Paho.MQTT.Client("test.mosquitto.org", 8080, "AndrewSymes");
 }
 
 // called when a message arrives
@@ -91,7 +81,7 @@ function onMessageArrived(message) {
 </style>
   </head>
   <body>
-    <h1>LAB 4 Mapping time</h1>
+    <h1>Lab 4 Mapping time</h1>
     <br>
     <form>
   <label for="choosehost">Host</label><br>
@@ -130,6 +120,7 @@ function onMessageArrived(message) {
 
     </script>
 <br>
+<!-- The following code was enabled by the following resource https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API/Using_the_Geolocation_API -->
     <button id = "find-me">Where am I</button><br/>
 
 <p id = "status"></p>
