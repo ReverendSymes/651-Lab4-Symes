@@ -54,6 +54,7 @@ function onConnectionLost(responseObject) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
   alert("Lost the Connection :(");
+  client = new Paho.MQTT.Client("test.mosquitto.org", 8080, "AndrewSymes");
 }
 
 // called when a message arrives
@@ -86,6 +87,15 @@ function onMessageArrived(message) {
   </head>
   <body>
     <h1>LAB 4 Mapping time</h1>
+    <br>
+    <form>
+  <label for="fname">Host</label><br>
+  <input type="text" id="fname" name="fname"><br>
+  <label for="lname">Port</label><br>
+  <input type="text" id="lname" name="lname"><br>
+  <button type="button" name="button">Submit Values</button>
+</form>
+<br>
     <div id="map" style="width: 100%; height: 70%;"></div>
 
     <script>
@@ -128,10 +138,13 @@ const mapLink = document.querySelector('#map-link');
 mapLink.href = '';
 mapLink.textContent = '';
 
+
+// function markme(position){
+//   Var myMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+// }
 function success(position) {
 const latitude  = position.coords.latitude;
 const longitude = position.coords.longitude;
-// Var myMarker = L.marker([latitude, longitude]).addTo(map);
 
 status.textContent = '';
 mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
@@ -154,5 +167,28 @@ document.querySelector('#find-me').addEventListener('click', geoFindMe);
 </script>
     <br>
 <button type="button" onclick= "disconnect()" name="button">Please Disconnect</button>
+
+<br>
+<button id = "mark-me">mark where I am</button><br/>
+
+<script type="text/javascript">
+  function geoPlaceMe() {
+
+const status = document.querySelector('#status');
+const mapLink = document.querySelector('#map-link');
+alert(worked);
+// function success(position) {
+// const latitude  = position.coords.latitude;
+// const longitude = position.coords.longitude;
+// alert(worked);
+// }
+
+// function markme(position){
+//   var myMarker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+// }
+}
+document.querySelector('#mark-me').addEventListener('click', geoPlaceMe);
+</script>
+
   </body>
 </html>
