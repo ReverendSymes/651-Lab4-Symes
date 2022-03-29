@@ -52,6 +52,7 @@ function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
     console.log("onConnectionLost:"+responseObject.errorMessage);
   }
+  alert("Lost the Connection :(");
 }
 
 // called when a message arrives
@@ -150,6 +151,6 @@ navigator.geolocation.getCurrentPosition(success, error);
 document.querySelector('#find-me').addEventListener('click', geoFindMe);
 </script>
     <br>
-<button type="button" name="button">Please Disconnect</button>
+<button type="button" onclick= "disconnect()" name="button">Please Disconnect</button>
   </body>
 </html>
